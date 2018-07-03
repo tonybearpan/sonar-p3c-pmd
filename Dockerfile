@@ -23,8 +23,8 @@ RUN set -x \
     && rm -rf "$GNUPGHOME" /usr/local/bin/gosu.asc \
     && chmod +x /usr/local/bin/gosu \
     && gosu nobody true \
-    && cd /opt/sonarqube/extensions/plugins \
-    && wget http://7s1sq7.com1.z0.glb.clouddn.com/sonar-pmd-plugin-2.6.jar
+    && wget http://7s1sq7.com1.z0.glb.clouddn.com/sonar-pmd-plugin-2.6.jar \
+    && mv sonar-pmd-plugin-2.6.jar /opt/sonarqube/extensions/plugins
 
 RUN set -x \
 
