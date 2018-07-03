@@ -22,10 +22,7 @@ RUN set -x \
     && gpg --batch --verify /usr/local/bin/gosu.asc /usr/local/bin/gosu \
     && rm -rf "$GNUPGHOME" /usr/local/bin/gosu.asc \
     && chmod +x /usr/local/bin/gosu \
-    && gosu nobody true \
-    && wget http://7s1sq7.com1.z0.glb.clouddn.com/sonar-pmd-plugin-2.6.jar \
-    && mv sonar-pmd-plugin-2.6.jar /opt/sonarqube/extensions/plugins
-
+    && gosu nobody true
 RUN set -x \
 
     # pub   2048R/D26468DE 2015-05-25
@@ -42,7 +39,10 @@ RUN set -x \
     && mv sonarqube-$SONAR_VERSION sonarqube \
     && chown -R sonarqube:sonarqube sonarqube \
     && rm sonarqube.zip* \
-    && rm -rf $SONARQUBE_HOME/bin/*
+    && rm -rf $SONARQUBE_HOME/bin/* \
+    && wget http://7s1sq7.com1.z0.glb.clouddn.com/sonar-pmd-plugin-2.6.jar \
+    && mv sonar-pmd-plugin-2.6.jar /opt/sonarqube/extensions/plugins
+
 
 VOLUME "$SONARQUBE_HOME/data"
 
